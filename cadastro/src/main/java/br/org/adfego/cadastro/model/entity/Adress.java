@@ -38,4 +38,8 @@ public class Adress {
     @Column()
     @Enumerated(value = EnumType.STRING)
     private PhoneType phoneType;
+
+    @ManyToOne
+    @JoinColumn(name = "associated_id")
+    private Associated associated;
 }

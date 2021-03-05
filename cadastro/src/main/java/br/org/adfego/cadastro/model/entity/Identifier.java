@@ -1,7 +1,7 @@
 package br.org.adfego.cadastro.model.entity;
 
 
-import br.org.adfego.cadastro.model.enums.ItendifierType;
+import br.org.adfego.cadastro.model.enums.IdendifierType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -10,10 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 public class Identifier {
     @Id
@@ -30,10 +27,20 @@ public class Identifier {
 
     @Column()
     @Enumerated(value = EnumType.STRING)
-    private ItendifierType itendifierType;
+    private IdendifierType idendifierType;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "associated_id")
     private Associated associated;
+
+    @Builder
+    public Identifier(Long id, String number, String complement, IdendifierType idendifierType, Associated associated){
+        this.id = id;
+        this.number = number;
+        this.complement = complement;
+        this.idendifierType = idendifierType;
+        this.associated = associated;
+    }
+
+    public Identifier() {}
 }

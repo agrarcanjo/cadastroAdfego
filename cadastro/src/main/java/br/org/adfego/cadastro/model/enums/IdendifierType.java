@@ -1,16 +1,14 @@
 package br.org.adfego.cadastro.model.enums;
 
-public enum PhoneType {
+public enum IdendifierType {
 
-	CELULAR (0, "Celular"),
-	TRABALHO (1, "Trabalho"),
-	RESIDENCIA (2, "Residência"),
-	CONTATO (3, "Contato");
+	CPF (0, "CPF"),
+	RG (1, "RG");
 
 	private int cod;
 	private String descricao;
 
-	private PhoneType(int cod, String descricao) {
+	IdendifierType(int cod, String descricao) {
 		this.cod = cod;
 		this.descricao = descricao;
 	}

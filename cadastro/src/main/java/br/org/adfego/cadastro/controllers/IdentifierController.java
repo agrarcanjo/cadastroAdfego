@@ -52,7 +52,7 @@ public class IdentifierController {
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(value = "/maioresprecos/{preco}", method = RequestMethod.GET)
+    @RequestMapping(value = "/identifiers/{idAssociated}", method = RequestMethod.GET)
     public ResponseEntity<Collection<Identifier>> findIdentifiers(@PathVariable Long idAssociated) {
         Collection<Identifier> collection = service.findIdentifiers(idAssociated);
         return ResponseEntity.ok().body(collection);

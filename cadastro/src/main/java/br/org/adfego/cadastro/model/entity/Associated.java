@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Data 
@@ -29,10 +30,12 @@ public class Associated extends User {
     private Collection<DeficiencyAssociated> deficiencyAssociateds = new ArrayList<>();
 
     @Builder
-    public Associated(Long id, String name, Boolean situacao, Boolean dependent) {
-        super();
+    public Associated(Long id, String name, String email, String dadName, String momName, Character genre,  CivilStatus civilStatus, Profession profession, Boolean situacao, Date birthDate, Boolean dependent, Collection<Identifier> identifiers, Collection<DeficiencyAssociated> deficiencyAssociateds) {
+        super(id, name, email, dadName, momName, genre, civilStatus, profession, birthDate);
         this.situacao = situacao;
         this.dependent = dependent;
+        this.identifiers = identifiers;
+        this.deficiencyAssociateds = deficiencyAssociateds;
     }
 
 

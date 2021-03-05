@@ -1,21 +1,15 @@
 package br.org.adfego.cadastro.model.entity;
 
-import br.org.adfego.cadastro.model.enums.Situation;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @MappedSuperclass
@@ -59,14 +53,6 @@ public abstract class User implements Serializable {
 	@JoinColumn(name = "profession_id")
 	private Profession profession;
 
-	@OneToMany
-	@JoinColumn(name = "phones_id")
-	private List<Phone> phones;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "adress_id")
-	private Adress adress;
-
 	@Column()
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date birthDate;
@@ -79,4 +65,15 @@ public abstract class User implements Serializable {
 	@Convert(converter = Jsr310JpaConverters.LocalDateConverter.class)
 	private LocalDate registerDate;
 
+	public User(Long id, String name, String email, String dadName, String momName, Character genre, CivilStatus civilStatus, Profession profession, Date birthDate) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.dadName = dadName;
+		this.momName = momName;
+		this.genre = genre;
+		this.civilStatus = civilStatus;
+		this.profession = profession;
+		this.birthDate = birthDate;
+	}
 }
