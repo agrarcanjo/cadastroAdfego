@@ -46,6 +46,9 @@ No diretório target:
 ```bash
 > java -jar cadastro-0.0.1-SNAPSHOT.jar
 ```
+
+Para realizar as requisições segue o arquivo postman: [Requisições](Cadastro.postman_collection.json)
+
  ## Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.

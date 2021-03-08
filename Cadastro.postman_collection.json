@@ -1,0 +1,772 @@
+{
+	"info": {
+		"_postman_id": "4162d5d2-13f9-4e20-a895-0e23cf4d8be5",
+		"name": "Cadastro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Associated",
+			"item": [
+				{
+					"name": "consultar todos associados",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/associated",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"associated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "consultar associado",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/associated/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"associated",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Associado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"",
+									"tests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);",
+									"tests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"name\": \"Adfego nome usuário\",\n    \"email\": \"arcanjo@adfego.org.br\",\n    \"dadName\": \"nome do pai\",\n    \"momName\": \"Nome da mãe\",\n    \"genre\": \"M\",\n    \"civilStatus\": null,\n    \"profession\": null,\n    \"birthDate\": \"2020-10-10\",\n    \"updateDate\": \"2021-02-10\",\n    \"registerDate\": \"2021-02-10\",\n    \"situation\": 0,\n    \"dependent\": false,\n    \"identifiers\": [\n        {\n            \"id\": null,\n            \"number\": \"12122213113\",\n            \"complement\": null,\n            \"idendifierType\": 0\n\n        }\n    ],\n    \"deficiencyAssociateds\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/associated",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"associated"
+							]
+						},
+						"description": "The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \"hand\" has the value \"wave\". The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Associado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"",
+									"tests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);",
+									"tests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"test\",\n    \"email\": \"arcanjo@adfego\",\n    \"dadName\": \"pai 1\",\n    \"momName\": \"mae 2\",\n    \"genre\": \"M\",\n    \"civilStatus\": {\n        \"id\": 2,\n        \"name\": \"Casado\"\n    },\n    \"profession\": null,\n    \"birthDate\": \"1980-10-10\",\n    \"updateDate\": \"2020-10-10\",\n    \"registerDate\": \"2021-10-10\",\n    \"situation\": 1,\n    \"dependent\": false,\n    \"identifiers\": [\n        {\n            \"id\": null,\n            \"number\": \"111111\",\n            \"complement\": \"sptc\",\n            \"idendifierType\": 1\n\n        }\n    ],\n    \"deficiencyAssociateds\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/associated/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"associated",
+								"1"
+							]
+						},
+						"description": "The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \"hand\" has the value \"wave\". The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested."
+					},
+					"response": []
+				},
+				{
+					"name": "consultar todos associados filtro nome",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/associated/orderByNome",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"associated",
+								"orderByNome"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "consultar todos associados por nome",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/associated/byNome/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"associated",
+								"byNome",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Identifier",
+			"item": [
+				{
+					"name": "consultar identificador",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/identifier/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"identifier",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Identificador",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"",
+									"tests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);",
+									"tests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"number\": \"12312123123\",\n    \"complement\": null,\n    \"idendifierType\": 0,\n    \"associated\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/identifier",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"identifier"
+							]
+						},
+						"description": "The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \"hand\" has the value \"wave\". The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Body contains files\"] = responseBody.has(\"files\");",
+									"tests[\"Body contains args\"] = responseBody.has(\"args\");",
+									"tests[\"Body contains form\"] = responseBody.has(\"form\");",
+									"tests[\"Body contains headers\"] = responseBody.has(\"headers\");",
+									"tests[\"Body contains url\"] = responseBody.has(\"url\");",
+									"",
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"tests[\"Data has been passed\"] = (responseJSON && responseJSON.data && responseJSON.data.length)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "Donec fermentum, nisi sed cursus eleifend, nulla tortor ultricies tellus, ut vehicula orci arcu ut velit. In volutpat egestas dapibus. \nMorbi condimentum vestibulum sapien. Etiam dignissim diam quis eros lobortis gravida vel lobortis est. Etiam gravida sed."
+						},
+						"url": {
+							"raw": "http://localhost:8080/identifier/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"identifier",
+								"2"
+							]
+						},
+						"description": "The HTTP `DELETE` method is used to delete resources on a server. The exact\nuse of `DELETE` requests depends on the server implementation. In general, \n`DELETE` requests support both, Query String parameters as well as a Request \nBody.\n\nThis endpoint accepts an HTTP `DELETE` request and provides debug information\nsuch as the HTTP headers, Query String arguments, and the Request Body."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Identificador",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"",
+									"tests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);",
+									"tests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"number\": \"12312123123\",\n    \"complement\": \"sptc\",\n    \"idendifierType\": 0,\n    \"associated\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/identifier/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"identifier",
+								"1"
+							]
+						},
+						"description": "The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \"hand\" has the value \"wave\". The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DeficiencyAssociated",
+			"item": [
+				{
+					"name": "consultar deficiencia do associado",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/deficiencyAssociated/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deficiencyAssociated",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Deficiencia do associado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"",
+									"tests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);",
+									"tests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"cid\": \"1209081\",\n    \"incidentDate\": \"2020-02-02\",\n    \"deficiencyTail\": \"acidente\",\n    \"associated\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/deficiencyAssociated",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deficiencyAssociated"
+							]
+						},
+						"description": "The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \"hand\" has the value \"wave\". The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Body contains files\"] = responseBody.has(\"files\");",
+									"tests[\"Body contains args\"] = responseBody.has(\"args\");",
+									"tests[\"Body contains form\"] = responseBody.has(\"form\");",
+									"tests[\"Body contains headers\"] = responseBody.has(\"headers\");",
+									"tests[\"Body contains url\"] = responseBody.has(\"url\");",
+									"",
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"tests[\"Data has been passed\"] = (responseJSON && responseJSON.data && responseJSON.data.length)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "Donec fermentum, nisi sed cursus eleifend, nulla tortor ultricies tellus, ut vehicula orci arcu ut velit. In volutpat egestas dapibus. \nMorbi condimentum vestibulum sapien. Etiam dignissim diam quis eros lobortis gravida vel lobortis est. Etiam gravida sed."
+						},
+						"url": {
+							"raw": "http://localhost:8080/deficiencyAssociated/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deficiencyAssociated",
+								"2"
+							]
+						},
+						"description": "The HTTP `DELETE` method is used to delete resources on a server. The exact\nuse of `DELETE` requests depends on the server implementation. In general, \n`DELETE` requests support both, Query String parameters as well as a Request \nBody.\n\nThis endpoint accepts an HTTP `DELETE` request and provides debug information\nsuch as the HTTP headers, Query String arguments, and the Request Body."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Deficiência do associado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"",
+									"tests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);",
+									"tests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"cid\": \"1209081\",\n    \"incidentDate\": \"2020-02-02\",\n    \"deficiencyTail\": \"acidente de moto\",\n    \"associated\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/deficiencyAssociated/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deficiencyAssociated",
+								"1"
+							]
+						},
+						"description": "The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \"hand\" has the value \"wave\". The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adress",
+			"item": [
+				{
+					"name": "consultar endereço",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/adress/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adress",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar endereço",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"",
+									"tests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);",
+									"tests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"cep\": \"78498462\",\n    \"logradouro\": \"rua\",\n    \"bairro\": \"bairro\",\n    \"city\": \"gyn\",\n    \"associated\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/adress",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adress"
+							]
+						},
+						"description": "The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \"hand\" has the value \"wave\". The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Body contains files\"] = responseBody.has(\"files\");",
+									"tests[\"Body contains args\"] = responseBody.has(\"args\");",
+									"tests[\"Body contains form\"] = responseBody.has(\"form\");",
+									"tests[\"Body contains headers\"] = responseBody.has(\"headers\");",
+									"tests[\"Body contains url\"] = responseBody.has(\"url\");",
+									"",
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"tests[\"Data has been passed\"] = (responseJSON && responseJSON.data && responseJSON.data.length)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "Donec fermentum, nisi sed cursus eleifend, nulla tortor ultricies tellus, ut vehicula orci arcu ut velit. In volutpat egestas dapibus. \nMorbi condimentum vestibulum sapien. Etiam dignissim diam quis eros lobortis gravida vel lobortis est. Etiam gravida sed."
+						},
+						"url": {
+							"raw": "http://localhost:8080/adress/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adress",
+								"2"
+							]
+						},
+						"description": "The HTTP `DELETE` method is used to delete resources on a server. The exact\nuse of `DELETE` requests depends on the server implementation. In general, \n`DELETE` requests support both, Query String parameters as well as a Request \nBody.\n\nThis endpoint accepts an HTTP `DELETE` request and provides debug information\nsuch as the HTTP headers, Query String arguments, and the Request Body."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar endereço",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJSON;",
+									"",
+									"try { responseJSON = JSON.parse(responseBody); }",
+									"catch (e) { }",
+									"",
+									"",
+									"tests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);",
+									"tests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"cep\": \"78498462\",\n    \"logradouro\": \"rua teste\",\n    \"bairro\": \"bairro\",\n    \"city\": \"gyn\",\n    \"associated\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/adress/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"adress",
+								"1"
+							]
+						},
+						"description": "The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \"hand\" has the value \"wave\". The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
