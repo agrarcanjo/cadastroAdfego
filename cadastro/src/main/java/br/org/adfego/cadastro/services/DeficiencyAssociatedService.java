@@ -1,7 +1,7 @@
 package br.org.adfego.cadastro.services;
 
-import br.org.adfego.cadastro.model.entity.Identifier;
-import br.org.adfego.cadastro.model.repository.IdentifierRepository;
+import br.org.adfego.cadastro.model.entity.DeficiencyAssociated;
+import br.org.adfego.cadastro.model.repository.DeficiencyAssociatedRepository;
 import br.org.adfego.cadastro.services.exceptions.DataIntegrityException;
 import br.org.adfego.cadastro.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +12,25 @@ import java.util.Collection;
 import java.util.NoSuchElementException;
 
 @Service
-public class IdentifierService {
+public class DeficiencyAssociatedService {
 
     @Autowired
-    private IdentifierRepository repository;
+    private DeficiencyAssociatedRepository repository;
 
-    public Identifier findById(Long id) {
+    public DeficiencyAssociated findById(Long id) {
     	try {
-            Identifier obj = repository.findById(id).get();
+            DeficiencyAssociated obj = repository.findById(id).get();
         	return obj;
         } catch (NoSuchElementException e) {
-        	throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Identifier.class.getName());
+        	throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + DeficiencyAssociated.class.getName());
         }
     }
 
-    public Collection<Identifier> findAll() {
+    public Collection<DeficiencyAssociated> findAll() {
         return repository.findAll();
     }
 
-    public Identifier insert(Identifier obj) {
+    public DeficiencyAssociated insert(DeficiencyAssociated obj) {
         obj.setId(null);
         try {
         	return repository.save(obj);
@@ -39,7 +39,7 @@ public class IdentifierService {
         }
     }
 
-    public Identifier update(Identifier obj) {
+    public DeficiencyAssociated update(DeficiencyAssociated obj) {
         findById(obj.getId());
         try {
         	return repository.save(obj);
@@ -53,12 +53,12 @@ public class IdentifierService {
         try {
             repository.deleteById(id);
         } catch (DataIntegrityViolationException e) {
-            throw new DataIntegrityException("Não é possível excluir um Tipo de Filme com Filmes vinculados a Empréstimos!");
+            throw new DataIntegrityException("Não é possível excluir um tipo de deficiencia vinculados a Associados!");
         }
     }
 
-    public Collection<Identifier> findIdentifiers(Long idAssociated) {
-        return repository.findIdentifiers(idAssociated);
+    public Collection<DeficiencyAssociated> findDeficiencyAssociated(Long idAssociated) {
+        return repository.findDeficiencyAssociated(idAssociated);
     }
 
 }

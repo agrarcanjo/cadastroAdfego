@@ -20,13 +20,13 @@ public enum IdendifierType {
 		return descricao;
 	}
 
-	public static PhoneType toEnum(Integer cod) {
+	public static IdendifierType toEnum(Integer cod) {
 
 		if (cod == null) {
 			return null;
 		}
 
-		for (PhoneType x : PhoneType.values()) {
+		for (IdendifierType x : IdendifierType.values()) {
 			if (cod.equals(x.getCod())) {
 				return x;
 			}

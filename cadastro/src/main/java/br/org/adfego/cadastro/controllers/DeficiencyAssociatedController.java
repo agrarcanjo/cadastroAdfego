@@ -1,7 +1,7 @@
 package br.org.adfego.cadastro.controllers;
 
-import br.org.adfego.cadastro.model.entity.Identifier;
-import br.org.adfego.cadastro.services.IdentifierService;
+import br.org.adfego.cadastro.model.entity.DeficiencyAssociated;
+import br.org.adfego.cadastro.services.DeficiencyAssociatedService;
 import br.org.adfego.cadastro.services.exceptions.ConstraintException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,26 +12,26 @@ import javax.validation.Valid;
 import java.util.Collection;
 
 @RestController
-@RequestMapping(value = "/identifier")
-public class IdentifierController {
+@RequestMapping(value = "/deficiencyAssociated")
+public class DeficiencyAssociatedController {
 
     @Autowired
-    private IdentifierService service;
+    private DeficiencyAssociatedService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Collection<Identifier>> findAll() {
-        Collection<Identifier> collection = service.findAll();
+    public ResponseEntity<Collection<DeficiencyAssociated>> findAll() {
+        Collection<DeficiencyAssociated> collection = service.findAll();
         return ResponseEntity.ok().body(collection);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Identifier> find(@PathVariable Long id) {
-        Identifier obj = service.findById(id);
+    public ResponseEntity<DeficiencyAssociated> find(@PathVariable Long id) {
+        DeficiencyAssociated obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Identifier> insert(@Valid @RequestBody Identifier obj, BindingResult br) {
+    public ResponseEntity<DeficiencyAssociated> insert(@Valid @RequestBody DeficiencyAssociated obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         obj = service.insert(obj);
@@ -39,7 +39,7 @@ public class IdentifierController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Identifier> update(@Valid @RequestBody Identifier obj, BindingResult br) {
+    public ResponseEntity<DeficiencyAssociated> update(@Valid @RequestBody DeficiencyAssociated obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         obj = service.update(obj);
@@ -52,9 +52,9 @@ public class IdentifierController {
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(value = "/identifiers/{idAssociated}", method = RequestMethod.GET)
-    public ResponseEntity<Collection<Identifier>> findIdentifiers(@PathVariable Long idAssociated) {
-        Collection<Identifier> collection = service.findIdentifiers(idAssociated);
+    @RequestMapping(value = "/deficiencyAssociated/{idAssociated}", method = RequestMethod.GET)
+    public ResponseEntity<Collection<DeficiencyAssociated>> findDeficiencyAssociated(@PathVariable Long idAssociated) {
+        Collection<DeficiencyAssociated> collection = service.findDeficiencyAssociated(idAssociated);
         return ResponseEntity.ok().body(collection);
     }
 

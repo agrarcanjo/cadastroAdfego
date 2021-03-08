@@ -35,10 +35,6 @@ public class Adress {
     @Size(min = 2, max = 50, message = "A cidade deve ter entre 2 a 50 caracteres")
     private String city;
 
-    @Column()
-    @Enumerated(value = EnumType.STRING)
-    private PhoneType phoneType;
-
     @ManyToOne
     @JoinColumn(name = "associated_id")
     private Associated associated;

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -45,11 +46,11 @@ public abstract class User implements Serializable {
 	@Column()
 	private Character genre;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "civil_status_id")
 	private CivilStatus civilStatus;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "profession_id")
 	private Profession profession;
 

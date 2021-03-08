@@ -6,10 +6,11 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 public class Phone {
     @Id
@@ -39,5 +40,8 @@ public class Phone {
         this.phoneType = (phoneType==null) ? null : phoneType.getCod();
     }
 
-    public Phone(){}
+    public PhoneType getPhoneType(){ return PhoneType.toEnum(phoneType); }
+
+    public void setPhoneType(PhoneType phoneType){ this.phoneType = phoneType.getCod(); }
+
 }

@@ -20,13 +20,13 @@ public enum Situation {
 		return descricao;
 	}
 
-	public static PhoneType toEnum(Integer cod) {
+	public static Situation toEnum(Integer cod) {
 
 		if (cod == null) {
 			return null;
 		}
 
-		for (PhoneType x : PhoneType.values()) {
+		for (Situation x : Situation.values()) {
 			if (cod.equals(x.getCod())) {
 				return x;
 			}

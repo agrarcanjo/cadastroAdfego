@@ -1,6 +1,5 @@
 package br.org.adfego.cadastro.model.entity;
 
-import br.org.adfego.cadastro.model.enums.PhoneType;
 import lombok.*;
 
 import javax.persistence.*;
