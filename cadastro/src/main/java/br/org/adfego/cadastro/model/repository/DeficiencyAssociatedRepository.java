@@ -12,7 +12,7 @@ import java.util.Collection;
 public interface DeficiencyAssociatedRepository extends JpaRepository<DeficiencyAssociated, Long> {
 
     @Transactional(readOnly = true)
-    @Query(value = "SELECT * FROM DeficiencyAssociated WHERE deficiencyAssociated.id_identifier > ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM DeficiencyAssociated WHERE deficiencyAssociated.id_identifier = ?1", nativeQuery = true)
     public Collection<DeficiencyAssociated> findDeficiencyAssociated(Long idAssociated);
 
 }
