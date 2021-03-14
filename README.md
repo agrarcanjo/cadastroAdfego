@@ -38,7 +38,7 @@ variáveis ambiente, executar o comando no diretório da aplicação:
 
 
 ```bash
-> mvn clean deploy
+> mvn  clean package spring-boot:repackage
 ```
 
 No diretório target:
