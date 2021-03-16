@@ -12,7 +12,7 @@ import java.util.Collection;
 public interface IdentifierRepository extends JpaRepository<Identifier, Long> {
 
     @Transactional(readOnly = true)
-    @Query(value = "SELECT * FROM Identifier WHERE identifier.id_identifier > ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Identifier WHERE identifier.id_identifier = ?1", nativeQuery = true)
     public Collection<Identifier> findIdentifiers(Long idIdentifier);
 
 }
