@@ -53,6 +53,9 @@ public class Associated extends User {
     @OneToMany(mappedBy = "associated", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Collection<Dependent> dependent = new ArrayList<>();
 
+    @Lob
+    @Column(length=2000)
+    private String note;
 
     @Builder
     public Associated(Long id, String name, String email, String dadName, String momName, Character genre, CivilStatus civilStatus, Profession profession, Situation situation, Date birthDate, List<Identifier> identifiers) {

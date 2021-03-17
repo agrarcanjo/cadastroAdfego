@@ -28,12 +28,9 @@ public class Dependent {
     @Column()
     private String name;
 
-    @Column()
-    private String note;
-
     @ManyToOne
     @JoinColumn(name = "associated_id")
     @NotNull(message = "O Associado deve ser preenchido")
-    private Associated user;
+    private Associated associated;
 
 }
