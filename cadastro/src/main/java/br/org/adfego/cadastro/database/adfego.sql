@@ -32,4 +32,7 @@ INSERT INTO `adfego`.`schooling`(`id`, `name`) VALUES (10,`Doutorado`);
 INSERT INTO `adfego`.`schooling`(`id`, `name`) VALUES (11,`Pós Doutorado`);
 
 
-INSERT INTO `adfego`.`deficiency` VALUES ('A00','CÃ³lera'),('A00.0','CÃ³lera Devida a Vibrio Cholerae 01, BiÃ³tipo Cholerae'),('A00.1','CÃ³lera Devida a Vibrio Cholerae 01, BiÃ³tipo El Tor'),('A00.9','CÃ³lera NÃ£o Especificada');
+INSERT INTO `adfego`.`deficiency` VALUES ('A00','CÃ³lera'),
+                                         ('A00.0','CÃ³lera Devida a Vibrio Cholerae 01, BiÃ³tipo Cholerae'),
+                                         ('A00.1','CÃ³lera Devida a Vibrio Cholerae 01, BiÃ³tipo El Tor'),
+                                         ('A00.9','CÃ³lera NÃ£o Especificada');
